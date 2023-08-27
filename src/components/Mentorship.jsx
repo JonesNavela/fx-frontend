@@ -1,15 +1,25 @@
-import { styled } from "styled-components"
-import Card from './Card'
+import { styled } from "styled-components";
+import Card from './Card';
+import backgroundImage from '../assets/logoPng.png'
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const HeaderText = styled.p`
-  display: flex;
-  justify-content: center;
   font-size: 38px;
   color: #FFFFFF;
   font-weight: bold;
-  padding-top: 10px;
   margin: 8px;
-`
+  padding-left: 50%;
+  padding-right: 50%;
+  text-align: center;
+`;
 
 const Text = styled.p`
   margin: 8px;
@@ -18,32 +28,45 @@ const Text = styled.p`
   text-align: left;
 `;
 
-const ListWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
 const ListText = styled.ul`
   color: #FFFFFF;
   font-size: 16px;
   text-align: left;
-`
+  padding-left: 20px;
+`;
+
+const ProgramWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+const ListSection = styled.section`
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  margin: 20px 0;
+
+  background-color: rgba(0, 0, 0, 0.2);
+`;
+
 
 function Mentorship() {
   return (
-    <>
+    <Container>
       <HeaderText>MENTORSHIP</HeaderText>
 
-      <Text>Our mentorship program offers two different programs which are suitable for both beginners and those who are more experienced.</Text>
-      <Text>Our programs are not only constructed to teach but also to inspire and motivate our clients Both programs are specially formulated to improve our clients trading strategies as well as expanding out clients market insight and trading knowledge.</Text>
+      <Text>Our mentorship program offers two different programs suitable for both beginners and experienced traders. These programs are designed not only to teach but also to inspire and motivate our clients. Both programs aim to improve trading strategies, market insight, and trading knowledge.</Text>
       
       <HeaderText>MENTORSHIP PROGRAM 3 DAY CYCLE (BEGINNER PROGRAM)</HeaderText>
-      <Text>Our beginner mentorship program on a three day cycle is a specifically designed system made and modified by the FX BLUEPRINT team in hopes to help those who are new to the forex trading industry.</Text>
-      <Text>With the aid of this mentor ship program you will gain clear direction on how to become consistent in your trading as well as developing different strategies to use when trading in the market.</Text>
-
-      <HeaderText>What is included:</HeaderText>
-
-      <ListWrapper>
+      <Text>Our beginner mentorship program on a three-day cycle is specifically designed for those new to the forex trading industry. It provides clear direction on becoming consistent in trading and developing effective strategies for the market.</Text>
+      <ListSection>
+        <Text>What's included:</Text>
         <ListText>
           <li>INTRODUCTION TO BROKERS</li>
           <li>INTRODUCTION TO META TRADER (MT4/MT5) </li>
@@ -58,17 +81,18 @@ function Mentorship() {
           <li>RISK MANAGEMENT </li>
           <li>THE FX BLUEPRINT BEGINNER HOLY GRAIL</li>
         </ListText>
-      </ListWrapper>
+      </ListSection>
 
       <HeaderText>MENTORSHIP PROGRAM</HeaderText>
-      <Card title={"BEGINNER PROGRAM"} period={"(3 DAY CYCLE)"} price={800} />
-      <Card title={"STANDARD PROGRAM"} period={"(3 DAY CYCLE)"} price={1000} />
+      <ProgramWrapper>
+        <Card title={"BEGINNER PROGRAM"} period={"(3 DAY CYCLE)"} price={800} />
+        <Card title={"STANDARD PROGRAM"} period={"(3 DAY CYCLE)"} price={1000} />
+      </ProgramWrapper>
 
       <HeaderText>TRADING SESSIONS</HeaderText>
       <Card title={"FOREX LESSONS"} period={"(3 HOURS)"} price={400} />
-
-    </>
-  )
+    </Container>
+  );
 }
 
-export default Mentorship
+export default Mentorship;

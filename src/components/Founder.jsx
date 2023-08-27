@@ -1,57 +1,59 @@
-import styled from 'styled-components'
-import FounderImage from '../assets/founder.jpg'
+import styled from 'styled-components';
+import FounderImage from '../assets/founder.jpg';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  // background-color: #222222;
+  color: #ffffff;
+`;
 
 const HeaderText = styled.p`
-  display: flex;
-  justify-content: center;
-  font-size: 38px;
-  color: #FFFFFF;
+  font-size: 28px;
   font-weight: bold;
-  margin-top: 40px;
-`
+  margin-bottom: 10px;
+`;
 
-const ImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-
-  img {
-    width: 200px;
-    height: 170px;
-    border-radius: 60%;
-  }
-`
+const Image = styled.img`
+  width: 200px;
+  height: 170px;
+  border-radius: 50%; /* Adjusted to 50% for a circular shape */
+  margin-bottom: 10px;
+`;
 
 const TitleText = styled.p`
-  display: flex;
-  justify-content: center;
-  color: white;
-  margin-top: 10px;
-
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
-`
+  margin-bottom: 10px;
+`;
 
 const Text = styled.p`
-  margin: 8px;
-  color: #FFFFFF;
-  font-size: 19px;
+  font-size: 14px;
   text-align: center;
+  line-height: 1.5;
 `;
 
 function Founder() {
   return (
-   <>
+    <Container id="founder">
       <HeaderText>CEO & FOUNDER</HeaderText>
-      <ImageContainer>
-        <img src={FounderImage} alt="" />
-      </ImageContainer>
-
+      <Image src={FounderImage} alt="Founder" />
       <TitleText>"TENDAI JUSTIN MUTENJE"</TitleText>
-      
-      <Text>I've been in the forex trading business for five years now, and throughout the moment, I've learned a lot about various trading methods and strategies. Since I do feel that this is one of my callings.</Text>
-      <Text>I have come to love what I do. I enjoy closing profitable accounts in the late afternoons as well as the early mornings of CPI and NFP. This has become my daily bread. I don't consider myself a product of anything apart from myself.</Text>
-   </>
-  )
+      <Text>
+        I've been in the forex trading business for five years now, and throughout
+        the moment, I've learned a lot about various trading methods and strategies.
+        Since I do feel that this is one of my callings.
+      </Text>
+      <Text>
+        I have come to love what I do. I enjoy closing profitable accounts in the
+        late afternoons as well as the early mornings of CPI and NFP. This has
+        become my daily bread. I don't consider myself a product of anything apart
+        from myself.
+      </Text>
+    </Container>
+  );
 }
 
-export default Founder
+export default Founder;

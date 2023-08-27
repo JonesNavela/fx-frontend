@@ -38,7 +38,7 @@ const ButtonContainer = styled.div`
   }
 `
 
-function Card({ title, period, price }) {
+function Card({ title, period, price, payUrl }) {
   return (
     <Container>
       <CardComponent>
@@ -47,7 +47,7 @@ function Card({ title, period, price }) {
         <CardTitle>R{price}</CardTitle>
         <ButtonContainer>
             <Button>
-              BUY
+              <a style={{ textDecoration: 'none', color: 'white'}} href={payUrl}>BUY ME</a>
             </Button>
         </ButtonContainer>
     </CardComponent>

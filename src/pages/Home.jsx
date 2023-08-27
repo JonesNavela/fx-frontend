@@ -6,6 +6,9 @@ import About from "../components/About"
 import Services from "../components/Services"
 import Mentorship from "../components/Mentorship"
 import Founder from "../components/Founder"
+import Footer from '../components/Footer'
+import Reviews from '../components/Reviews'
+import PaymentNotificationHandler from '../components/PaymentNotificationHandler'
 import { Button } from 'react-bootstrap'
 
 const HomeContainer = styled.div`
@@ -68,19 +71,11 @@ const Text = styled.div`
   text-align: center;
 `;
 
-// const HeaderText = styled.p`
-//   display: flex;
-//   justify-content: center;
-//   font-size: 38px;
-//   color: #FFFFFF;
-//   font-weight: bold;
-//   padding-top: 10px;
-// `
-
 function Home() {
   return (
     <HomeContainer>
       <Navigationbar />
+      <PaymentNotificationHandler />
 
       <LogoContainer>
         <img src={Logo} alt="FX Blueprint logo" />
@@ -99,10 +94,11 @@ function Home() {
         <Text>ABOUT US</Text>
       </ImageBg>
       <About />
-
+      <Founder />
       <Services />
       <Mentorship />
-      <Founder />
+      <Reviews />
+      <Footer />
     </HomeContainer>
   )
 }
