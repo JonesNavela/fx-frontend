@@ -13,6 +13,8 @@ function PaymentNotificationHandler() {
 
     if (paymentStatus === 'COMPLETE') {
       sendEmail(email_address, item_name);
+    } else {
+      console.log('payment was cancelled!!!!');
     }
   }, [location.search]);
 
