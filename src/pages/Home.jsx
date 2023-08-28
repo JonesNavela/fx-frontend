@@ -82,7 +82,7 @@ function Home() {
       </LogoContainer>
 
       <Slogan>
-        "BUILDING WEALTH AND <br /> EXPANDING KNOWKEDGE"
+        "BUILDING WEALTH AND <br /> EXPANDING KNOWLEDGE"
       </Slogan>
       <ViewButton>
         <Button>

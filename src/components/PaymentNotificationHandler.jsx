@@ -42,7 +42,7 @@ function PaymentNotificationHandler() {
     }
   }
 
-  return <div>Processing Payment...</div>;
+  return;
 }
 
 export default PaymentNotificationHandler;
