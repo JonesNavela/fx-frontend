@@ -85,7 +85,7 @@ function Home() {
         "BUILDING WEALTH AND <br /> EXPANDING KNOWLEDGE"
       </Slogan>
       <ViewButton>
-        <Button>
+        <Button href="#services">
           View Services
         </Button>
       </ViewButton>
