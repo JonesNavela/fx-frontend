@@ -85,12 +85,12 @@ function Mentorship() {
 
       <HeaderText>MENTORSHIP PROGRAM</HeaderText>
       <ProgramWrapper>
-        <Card title={"BEGINNER PROGRAM"} period={"(3 DAY CYCLE)"} price={800} />
-        <Card title={"STANDARD PROGRAM"} period={"(3 DAY CYCLE)"} price={1000} />
+        <Card title={"BEGINNER PROGRAM"} period={"(3 DAY CYCLE)"} price={800} payUrl="https://www.payfast.co.za/eng/process?cmd=_paynow&receiver=16866297&item_name=MENTORSHIP+BEGINNER+PROGRAM&email_confirmation=1&confirmation_address=mutenjejustin2@gmail.com&item_description=MENTORSHIP+BEGINNER+PROGRAM+(3+DAY+CYCLE)&return_url=https://fxblueprint.co.za&cancel_url=https://fxblueprint.co.za&notify_url=https://fxblueprint.co.za&amount=800" />
+        <Card title={"STANDARD PROGRAM"} period={"(3 DAY CYCLE)"} price={1000} payUrl="https://www.payfast.co.za/eng/process?cmd=_paynow&receiver=16866297&item_name=MENTORSHIP+STANDARD+PROGRAM&email_confirmation=1&confirmation_address=mutenjejustin2@gmail.com&item_description=MENTORSHIP+STANDARD+PROGRAM+(3+DAY+CYCLE)&return_url=https://fxblueprint.co.za&cancel_url=https://fxblueprint.co.za&notify_url=https://fxblueprint.co.za&amount=1000" />
       </ProgramWrapper>
 
       <HeaderText>TRADING SESSIONS</HeaderText>
-      <Card title={"FOREX LESSONS"} period={"(3 HOURS)"} price={400} />
+      <Card title={"FOREX LESSONS"} period={"(3 HOURS)"} price={400} payUrl="https://www.payfast.co.za/eng/process?cmd=_paynow&receiver=16866297&item_name=TRADING+SESSIONS+-+FOREX+LESSONS&email_confirmation=1&confirmation_address=mutenjejustin2@gmail.com&item_description=TRADING+SESSIONS+-+FOREX+LESSONS+-+3+hours&return_url=https://fxblueprint.co.za&cancel_url=https://fxblueprint.co.za&notify_url=https://fxblueprint.co.za&amount=400" />
     </Container>
   );
 }
