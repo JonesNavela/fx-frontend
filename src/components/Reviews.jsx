@@ -1,29 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
-import demoImage from '../assets/founder2.jpg'
+import esther from '../assets/esther.jpg'
+import thembela from '../assets/thembela.jpg'
+import shawn from '../assets/shawn.jpg'
 import backgroundImage from '../assets/logoPng.png';
 
 const reviewsData = [
   {
     id: 1,
-    userImage: demoImage,
-    userName: 'John Test',
+    userImage: esther,
+    userName: 'Esther',
     rating: 5,
-    review: "Great experience! The service was top-notch.",
+    review: "I struggled with some of the more complex concepts such as how to properly over leverage, manage risks as well as moving average strategies before joining the Fx team. I've managed to achieve better risk management and i've developed my technique which has helped me minimise losses andincrease profits.",
   },
   {
     id: 2,
-    userImage: demoImage,
-    userName: 'John Test',
+    userImage: thembela,
+    userName: 'Thembela',
     rating: 5,
-    review: "Great experience! The service was top-notch.",
+    review: "A financial Company that does not only provide financial services but also provide mental health, Self consciousness/ Awareness & Personal Growth. These are the basic elements needed to manage and Multiply Wealth.",
   },
   {
     id: 3,
-    userImage: demoImage,
-    userName: 'John Test',
+    userImage: shawn,
+    userName: 'Shawn',
     rating: 5,
-    review: "Great experience! The service was top-notch.",
+    review: "Before joining the Fx Blueprint team I had many questions on how and when to implement certain concept's techniques and strategies. When working with Fx team i started to develop a better understanding on certain aspects and how to use and develop different techniques to improve my trading skills.",
   },
 ];
 

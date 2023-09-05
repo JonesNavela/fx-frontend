@@ -1,11 +1,12 @@
 import { Container, Nav, Navbar } from 'react-bootstrap'
+import Logo from '../assets/logoHeaderTrans.png'
 
 function Navigationbar() {
   return (
     <Navbar sticky="top" expand="lg" className="bg-body-tertiary">
       <Container fluid style={{ backgroundColor: '##060606 !important' }}>
         <div>
-        <Navbar.Brand href="#home">FX Blueprint</Navbar.Brand>
+        <Navbar.Brand href="#home"><img style={{ width: '10rem' }} src={Logo} alt="logo" /></Navbar.Brand>
 
         </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

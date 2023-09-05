@@ -1,6 +1,6 @@
 import Navigationbar from "../components/Navigationbar"
 import styled from 'styled-components'
-import Logo from '../assets/logoPng.png'
+import Logo from '../assets/main.png'
 import BgImg from '../assets/bgImage.png'
 import About from "../components/About"
 import Services from "../components/Services"
