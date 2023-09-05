@@ -7,13 +7,9 @@ function PaymentNotificationHandler() {
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    console.log("🚀 ~ file: PaymentNotificationHandler.jsx:10 ~ useEffect ~ searchParams:", searchParams)
     const paymentStatus = searchParams.get('payment_status');
-    console.log("🚀 ~ file: PaymentNotificationHandler.jsx:12 ~ useEffect ~ paymentStatus:", paymentStatus)
     const item_name = searchParams.get('item_name');
-    console.log("🚀 ~ file: PaymentNotificationHandler.jsx:14 ~ useEffect ~ item_name:", item_name)
     const email_address = searchParams.get('email_address');
-    console.log("🚀 ~ file: PaymentNotificationHandler.jsx:16 ~ useEffect ~ email_address:", email_address)
 
     if (paymentStatus === 'COMPLETE') {
       sendEmail(email_address, item_name);

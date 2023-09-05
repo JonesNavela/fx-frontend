@@ -11,7 +11,7 @@ const reviewsData = [
     userImage: esther,
     userName: 'Esther',
     rating: 5,
-    review: "I struggled with some of the more complex concepts such as how to properly over leverage, manage risks as well as moving average strategies before joining the Fx team. I've managed to achieve better risk management and i've developed my technique which has helped me minimise losses andincrease profits.",
+    review: "I struggled with some of the more complex concepts such as how to properly over leverage, manage risks as well as moving average strategies before joining the Fx team. I've managed to achieve better risk management and i've developed my technique which has helped me minimise losses and increase profits.",
   },
   {
     id: 2,
@@ -104,13 +104,13 @@ const Reviews = () => {
             <img src={review.userImage} alt={review.userName} />
           </UserImage>
           <ReviewDetails>
-            <h3>{review.userName}</h3>
-            <p>{review.review}</p>
-            <Rating>
+          <Rating>
+          <h3>{review.userName}</h3>
               {Array.from({ length: Math.floor(review.rating) }).map((_, index) => (
                 <span key={index} className="star">&#9733;</span>
               ))}
             </Rating>
+            <p>{review.review}</p>
           </ReviewDetails>
         </ReviewCard>
       ))}
