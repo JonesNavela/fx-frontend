@@ -43,10 +43,10 @@ const ViewButton = styled.div`
   button {
     font-size: 17px
     font-weight: bold;
-    color: #030303;
-    background-color: #A8963E;
+    color: white  #A8963E !important;
+    background-color: #A8963E !important;
     border-radius: 22px;
-    width: 305px ;
+    width: 150px ;
   }
 `
 
@@ -85,8 +85,8 @@ function Home() {
         "BUILDING WEALTH AND <br /> EXPANDING KNOWLEDGE"
       </Slogan>
       <ViewButton>
-        <Button href="#services">
-          View Services
+        <Button>
+         <a href="#services" style={{ textDecoration: 'none', color: 'white'}}>View Services</a>
         </Button>
       </ViewButton>
 
