@@ -6,7 +6,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
-app.get('/payment-notification', async (req, res) => {
+app.get('https://serverless-payfast.vercel.app/payment-notification', async (req, res) => {
   // Retrieve payment notification data from the request
   const { payment_status, item_name, email_address } = req.body;
   console.log("🚀 ~ app.post ~ email_address:", email_address)
