@@ -1,20 +1,39 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Services from './pages/Services'
-// import Founder from './pages/Founder';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home';
+
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        clients: {
+          merge(existing, incoming) {
+            return incoming;
+          }
+        },
+      }
+    }
+  }
+});
+
+const client = new ApolloClient({
+  uri: 'http://localhost:5000/graphql',
+  cache,
+});
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/">
-          <Route index element={<Home />} />
-          {/* <Route path="founder" element={<Founder />} /> */}
-          <Route path="services" element={<Services />} />
-          {/* <Route path="*" element={<NoPage />} /> */}
-        </Route>
-      </Routes>
-    </Router>
+    <>
+      <ApolloProvider client={client}>
+        <Router>
+          <Routes>
+            <Route path="/">
+              <Route index element={<Home />} />
+            </Route>
+          </Routes>
+        </Router>
+      </ApolloProvider>
+    </>
   );
 }
 

@@ -13,6 +13,7 @@ import { Button } from 'react-bootstrap'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+
 const HomeContainer = styled.div`
   background-color: #060606 !important;
   display: flex;
@@ -79,7 +80,7 @@ function Home() {
   return (
     <HomeContainer>
       <Navigationbar />
-      {/* <PaymentNotificationHandler /> */}
+      <PaymentNotificationHandler />
 
       <LogoContainer data-aos="zoom-in" data-aos-duration="3000">
         <img src={Logo} alt="FX Blueprint logo" />
