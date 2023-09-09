@@ -4,14 +4,17 @@ const emailjs = require('emailjs-com');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Use bodyParser middleware to parse JSON request bodies
 app.use(bodyParser.json());
 
-app.get('https://serverless-payfast.vercel.app/payment-notification', async (req, res) => {
-  // Retrieve payment notification data from the request
+// Define a POST route for handling payment notifications
+app.post('/payment-notification', async (req, res) => {
+  // Retrieve payment notification data from the request body
   const { payment_status, item_name, email_address } = req.body;
-  console.log("🚀 ~ app.post ~ email_address:", email_address)
-  console.log("🚀 ~ app.post ~ item_name:", item_name)
-  console.log("🚀 ~ app.post ~ payment_status:", payment_status)
+  console.log("🚀 ~ app.post ~ email_address:", email_address);
+  console.log("🚀 ~ app.post ~ item_name:", item_name);
+  console.log("🚀 ~ app.post ~ payment_status:", payment_status);
 
   // Check payment status
   if (payment_status === 'COMPLETE') {
