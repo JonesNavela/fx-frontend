@@ -4,6 +4,8 @@ import esther from '../assets/esther.jpg'
 import thembela from '../assets/thembela.jpg'
 import shawn from '../assets/shawn.jpg'
 import backgroundImage from '../assets/logoPng.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const reviewsData = [
   {
@@ -88,18 +90,19 @@ const TextWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
 `;
+
+AOS.init();
 
 const Reviews = () => {
   return (
     <ReviewsContainer>
-      <TextWrapper>
+      <TextWrapper data-aos="zoom-in" data-aos-duration="3000">
         <HeaderText>REVIEWS</HeaderText>
       </TextWrapper>
 
       {reviewsData.map((review) => (
-        <ReviewCard key={review.id}>
+        <ReviewCard key={review.id} data-aos="fade-right" data-aos-duration="3000">
           <UserImage>
             <img src={review.userImage} alt={review.userName} />
           </UserImage>

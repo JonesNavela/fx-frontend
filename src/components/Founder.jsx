@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import FounderImage from '../assets/founder.jpg';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Container = styled.div`
   display: flex;
@@ -35,18 +37,20 @@ const Text = styled.p`
   line-height: 1.5;
 `;
 
+AOS.init();
+
 function Founder() {
   return (
     <Container id="founder">
-      <HeaderText>CEO & FOUNDER</HeaderText>
+      <HeaderText data-aos="fade-right" data-aos-duration="3000">CEO & FOUNDER</HeaderText>
       <Image src={FounderImage} alt="Founder" />
-      <TitleText>"TENDAI JUSTIN MUTENJE"</TitleText>
-      <Text>
+      <TitleText data-aos="zoom-in" data-aos-duration="3000">"TENDAI JUSTIN MUTENJE"</TitleText>
+      <Text data-aos="zoom-in" data-aos-duration="3000">
         I've been in the forex trading business for five years now, and throughout
         the moment, I've learned a lot about various trading methods and strategies.
         Since I do feel that this is one of my callings.
       </Text>
-      <Text>
+      <Text data-aos="zoom-in" data-aos-duration="3000">
         I have come to love what I do. I enjoy closing profitable accounts in the
         late afternoons as well as the early mornings of CPI and NFP. This has
         become my daily bread. I don't consider myself a product of anything apart

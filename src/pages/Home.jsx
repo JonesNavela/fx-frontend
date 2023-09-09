@@ -10,6 +10,8 @@ import Footer from '../components/Footer'
 import Reviews from '../components/Reviews'
 import PaymentNotificationHandler from '../components/PaymentNotificationHandler'
 import { Button } from 'react-bootstrap'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const HomeContainer = styled.div`
   background-color: #060606 !important;
@@ -71,27 +73,29 @@ const Text = styled.div`
   text-align: center;
 `;
 
+AOS.init();
+
 function Home() {
   return (
     <HomeContainer>
       <Navigationbar />
       <PaymentNotificationHandler />
 
-      <LogoContainer>
+      <LogoContainer data-aos="zoom-in" data-aos-duration="3000">
         <img src={Logo} alt="FX Blueprint logo" />
       </LogoContainer>
 
-      <Slogan>
+      <Slogan data-aos="zoom-in-down" data-aos-duration="3000">
         "BUILDING WEALTH AND <br /> EXPANDING KNOWLEDGE"
       </Slogan>
-      <ViewButton>
+      <ViewButton data-aos="fade-right" data-aos-duration="3000">
         <Button>
          <a href="#services" style={{ textDecoration: 'none', color: 'white'}}>View Services</a>
         </Button>
       </ViewButton>
 
       <ImageBg>
-        <Text>ABOUT US</Text>
+        <Text data-aos="fade-right" data-aos-duration="3000">ABOUT US</Text>
       </ImageBg>
       <About />
       <Founder />
