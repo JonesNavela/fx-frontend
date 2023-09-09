@@ -16,10 +16,9 @@ const HeaderText = styled.p`
   color: #FFFFFF;
   font-weight: bold;
   margin: 8px;
-  padding-left: 50%;
-  padding-right: 50%;
-  text-align: center;
+  text-align: center; /* Center the text horizontally */
 `;
+
 
 const Text = styled.p`
   margin: 8px;
