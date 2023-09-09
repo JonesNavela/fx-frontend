@@ -94,8 +94,8 @@ function Home() {
         </Button>
       </ViewButton>
 
-      <ImageBg>
-        <Text data-aos="fade-right" data-aos-duration="3000">ABOUT US</Text>
+      <ImageBg data-aos="fade-right" data-aos-duration="3000">
+        <Text>ABOUT US</Text>
       </ImageBg>
       <About />
       <Founder />
