@@ -11,7 +11,7 @@ const CardComponent = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 300px;
+  width: 30vh;
   background-color: white;
   color: black;
   border-radius: 12px;
@@ -33,7 +33,7 @@ const ButtonContainer = styled.div`
     color: white;
     font-size: 14px;
     font-weight: bold;
-    width: 120px;
+    width: 16vh;
     margin: 5px;
   }
 `

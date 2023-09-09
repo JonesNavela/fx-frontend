@@ -17,7 +17,7 @@ const HeaderText = styled.p`
 `;
 
 const Image = styled.img`
-  width: 200px;
+  width: 28vh;
   height: 170px;
   border-radius: 50%; /* Adjusted to 50% for a circular shape */
   margin-bottom: 10px;

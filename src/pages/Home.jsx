@@ -46,7 +46,7 @@ const ViewButton = styled.div`
     color: white  #A8963E !important;
     background-color: #A8963E !important;
     border-radius: 22px;
-    width: 150px ;
+    width: 21vh;
   }
 `
 

@@ -51,7 +51,7 @@ const ReviewCard = styled.div`
 `;
 
 const UserImage = styled.div`
-  width: 80px;
+  width: 11vh;
   height: 80px;
   border-radius: 50%;
   margin-right: 20px;
