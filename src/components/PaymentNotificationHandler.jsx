@@ -1,35 +1,38 @@
 import { useEffect } from "react";
-import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useQuery, useMutation } from "@apollo/client";
+import { GET_CLIENTS } from '../queries/clientQueries'
+import { DELETE_CLIENT } from '../mutations/clientMutations';
 import emailjs from "emailjs-com";
 
 function PaymentNotificationHandler() {
-  useEffect(() => {
-    // Make an HTTP request to the server
-    axios
-      .post("http://localhost:3001/payment-notification", {
-        // Include any necessary request data here if needed
-      })
-      .then((response) => {
-        const { payment_status, item_name, email_address } = response?.data;
+  const { loading, error, data } = useQuery(GET_CLIENTS);
+  const [deleteClient] = useMutation(DELETE_CLIENT, {
+    variables: { id: data?.id },
 
-        console.log("Payment Status:", payment_status);
-        console.log("Item Name:", item_name);
-        console.log("Email Address:", email_address);
-        if (payment_status === "COMPLETE") {
-          sendEmail(email_address, item_name);
-          console.log("Payment was successful!");
-        } else {
-          console.log("Payment was canceled or failed.");
-        }
-      })
-      .catch((error) => {
-        // Handle any errors from the server
-        console.error("Response Error:", error);
+    update(cache, { data: { deleteClient } }) {
+      const { clients } = cache.readQuery({ query: GET_CLIENTS });
+      cache.writeQuery({
+        query: GET_CLIENTS,
+        data: {
+          clients: clients.filter((client) => client?.id !== deleteClient?.id),
+        },
       });
-  }, []); // Empty dependency array for running the effect once
+    },
+  });
 
-  const sendEmail = async (email, item) => {
-    // Replace these with your actual email service credentials
+  useEffect(() => {
+    if (!loading && !error) {
+      data?.clients?.forEach((client) => {
+        if (client.payment === "COMPLETE") {
+          sendEmail(client.email, client.item, client.id);
+        }
+      });
+    }
+  }, [loading, error, data]);
+
+  const sendEmail = async (email, item, clientId) => {
     const serviceId = "service_q8xdbk5";
     const templateId = "template_0sdou9y";
     const publicKey = "XMuBgQ3YGKWmWQ-0m";
@@ -53,13 +56,24 @@ function PaymentNotificationHandler() {
         templateParams,
         publicKey
       );
+      toast.success('Payment successful! Please check your email to access the Fx Blueprint groupchat', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
       console.log("Email sent successfully:", response);
+      await deleteClient({ variables: { id: clientId } });
     } catch (error) {
       console.error("Error sending email:", error);
     }
   };
 
-  return null; // You can return null or omit the return statement
+  return <ToastContainer style={{ width: '300px' }} position={toast.POSITION.TOP_RIGHT}/>;
 }
 
 export default PaymentNotificationHandler;
