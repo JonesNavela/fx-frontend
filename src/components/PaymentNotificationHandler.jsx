@@ -6,23 +6,26 @@ function PaymentNotificationHandler() {
   const location = useLocation();
 
   useEffect(() => {
+    // Parse URL parameters
     const searchParams = new URLSearchParams(location.search);
     const paymentStatus = searchParams.get('payment_status');
     const item_name = searchParams.get('item_name');
     const email_address = searchParams.get('email_address');
 
+    // Check payment status
     if (paymentStatus === 'COMPLETE') {
       sendEmail(email_address, item_name);
+      console.log('Payment was successful!');
     } else {
-      console.log('payment was cancelled!!!!');
+      console.log('Payment was canceled or failed.');
     }
-  }, [location.search]);
+  }, []); // Empty dependency array for running the effect once
 
-  async function sendEmail(email, item) {
+  const sendEmail = async (email, item) => {
     // Replace these with your actual email service credentials
     const serviceId = 'service_q8xdbk5';
     const templateId = 'template_0sdou9y';
-    const publicKey = 'XMuBgQ3YGKWmWQ-0m'
+    const publicKey = 'XMuBgQ3YGKWmWQ-0m';
     const userId = 'XMuBgQ3YGKWmWQ-0m';
 
     // Initialize Email.js
@@ -44,7 +47,7 @@ function PaymentNotificationHandler() {
     }
   }
 
-  return;
+  return null; // You can return null or omit the return statement
 }
 
 export default PaymentNotificationHandler;
