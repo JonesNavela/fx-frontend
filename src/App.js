@@ -18,7 +18,7 @@ const cache = new InMemoryCache({
 
 const client = new ApolloClient({
   // uri: 'http://localhost:5000/graphql',
-  uri: 'https://serverless-payfast.vercel.app/graphql',
+  uri: 'https://fx-blueprint-backend.onrender.com/graphql',
   cache,
 });
 console.info("🚀 Client running on:", client)
