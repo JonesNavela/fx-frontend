@@ -17,7 +17,6 @@ const cache = new InMemoryCache({
 });
 
 const client = new ApolloClient({
-  // uri: 'http://localhost:5000/graphql',
   uri: 'https://fx-blueprint-backend.onrender.com/graphql',
   cache,
 });
