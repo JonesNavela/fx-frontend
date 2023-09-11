@@ -41,11 +41,11 @@ AOS.init();
 
 function Founder() {
   return (
-    <Container id="founder">
-      <HeaderText data-aos="fade-right" data-aos-duration="3000">CEO & FOUNDER</HeaderText>
+    <Container id="founder" data-aos="zoom-in" data-aos-duration="3000">
+      <HeaderText>CEO & FOUNDER</HeaderText>
       <Image src={FounderImage} alt="Founder" />
-      <TitleText data-aos="zoom-in" data-aos-duration="3000">"TENDAI JUSTIN MUTENJE"</TitleText>
-      <Text data-aos="zoom-in" data-aos-duration="3000">
+      <TitleText>"TENDAI JUSTIN MUTENJE"</TitleText>
+      <Text>
         I've been in the forex trading business for five years now, and throughout
         the moment, I've learned a lot about various trading methods and strategies.
         Since I do feel that this is one of my callings.
