@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,70 +7,52 @@ import { GET_CLIENTS } from '../queries/clientQueries'
 import { DELETE_CLIENT } from '../mutations/clientMutations';
 import emailjs from "emailjs-com";
 
+const EMAIL_SERVICE_ID = "service_q8xdbk5";
+const EMAIL_TEMPLATE_ID = "template_0sdou9y";
+const EMAIL_PUBLIC_KEY = "XMuBgQ3YGKWmWQ-0m";
+const EMAIL_USER_ID = "XMuBgQ3YGKWmWQ-0m";
+
+const EMAIL_LINK_MAP = {
+  'CURRENCY_PAIRS_GOLD_MONTHLY': 'https://chat.whatsapp.com/He2FUmWc4yDLWwa1OMVJBW',
+  'CURRENCY PAIRS and GOLD (Lifetime)': 'https://chat.whatsapp.com/ENdoHq0CIqXHdsNyNOUSET',
+  'INDICE SIGNALS (Monthly)': 'https://chat.whatsapp.com/E0y2elqJSMsIUwkb38Unw2',
+  'INDICE SIGNALS (Lifetime)': 'https://chat.whatsapp.com/BDTOFjOAqj2FuMVFJQozeE',
+  'MENTORSHIP BEGINNER PROGRAM': 'https://chat.whatsapp.com/J8R8oFDBJFY0mBf7XV4OJe',
+  'MENTORSHIP STANDARD PROGRAM': 'https://chat.whatsapp.com/J8R8oFDBJFY0mBf7XV4OJe',
+  'TRADING SESSIONS - FOREX LESSONS': 'https://chat.whatsapp.com/J8R8oFDBJFY0mBf7XV4OJe',
+};
+
 function PaymentNotificationHandler() {
   const { loading, error, data } = useQuery(GET_CLIENTS);
-
-  const [deleteClient] = useMutation(DELETE_CLIENT, {
-    variables: { id: data?.id },
-
-    update(cache, { data: { deleteClient } }) {
-      const { clients } = cache.readQuery({ query: GET_CLIENTS });
-      cache.writeQuery({
-        query: GET_CLIENTS,
-        data: {
-          clients: clients.filter((client) => client?.id !== deleteClient?.id),
-        },
-      });
-    },
-  });
+  const [deleteClient] = useMutation(DELETE_CLIENT);
 
   useEffect(() => {
     if (!loading && !error) {
       data?.clients?.forEach((client) => {
-        if (client.payment === "COMPLETE" && client.item === 'CURRENCY_PAIRS_GOLD_MONTHLY') {
-          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/He2FUmWc4yDLWwa1OMVJBW');
-        } else if (client.payment === "COMPLETE" && client.item === 'CURRENCY PAIRS and GOLD (Lifetime)') {
-          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/ENdoHq0CIqXHdsNyNOUSET');
-        } else if (client.payment === "COMPLETE" && client.item === 'INDICE SIGNALS (Monthly)') {
-          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/E0y2elqJSMsIUwkb38Unw2');
-        } else if (client.payment === "COMPLETE" && client.item === 'INDICE SIGNALS (Lifetime)') {
-          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/BDTOFjOAqj2FuMVFJQozeE');
-        } else if (client.payment === "COMPLETE" && client.item === 'MENTORSHIP BEGINNER PROGRAM') {
-          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/J8R8oFDBJFY0mBf7XV4OJe');
-        } else if (client.payment === "COMPLETE" && client.item === 'MENTORSHIP STANDARD PROGRAM') {
-          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/J8R8oFDBJFY0mBf7XV4OJe');
-        } else if (client.payment === "COMPLETE" && client.item === 'TRADING SESSIONS - FOREX LESSONS') {
-          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/J8R8oFDBJFY0mBf7XV4OJe');
+        if (client.payment === "COMPLETE" && EMAIL_LINK_MAP[client.item]) {
+          sendEmail(client.email, client.item, client.id);
         }
       });
     }
   }, [loading, error, data]);
 
-  const sendEmail = async (email, item, clientId, groupLink) => {
-    const serviceId = "service_q8xdbk5";
-    const templateId = "template_0sdou9y";
-    const publicKey = "XMuBgQ3YGKWmWQ-0m";
-    const userId = "XMuBgQ3YGKWmWQ-0m";
+  const sendEmail = async (email, item, clientId) => {
+    emailjs.init(EMAIL_USER_ID);
 
-    // Initialize Email.js
-    emailjs.init(userId);
-
-    // Prepare email data
     const templateParams = {
       to_email: email,
       subject: "Welcome to FX Blueprint!",
       item_name: item,
       reply_to: 'mutenjejustin2@gmail.com',
-      whatsLink: groupLink
+      whatsLink: EMAIL_LINK_MAP[item]
     };
 
     try {
-      // Send email using Email.js
       const response = await emailjs.send(
-        serviceId,
-        templateId,
+        EMAIL_SERVICE_ID,
+        EMAIL_TEMPLATE_ID,
         templateParams,
-        publicKey
+        EMAIL_PUBLIC_KEY
       );
       toast.success('Payment successful! Please check your email', {
         position: "top-right",
@@ -80,7 +63,7 @@ function PaymentNotificationHandler() {
         draggable: true,
         progress: undefined,
         theme: "dark",
-        });
+      });
       console.log("Email sent successfully:", response);
       await deleteClient({ variables: { id: clientId } });
     } catch (error) {
@@ -88,7 +71,7 @@ function PaymentNotificationHandler() {
     }
   };
 
-  return <ToastContainer style={{ width: '300px' }} position={toast.POSITION.TOP_RIGHT}/>;
+  return <ToastContainer style={{ width: '300px' }} position={toast.POSITION.TOP_RIGHT} />;
 }
 
 export default PaymentNotificationHandler;

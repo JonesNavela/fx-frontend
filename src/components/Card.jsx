@@ -11,7 +11,7 @@ const CardComponent = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 30vh;
+  width: 40vh;
   background-color: white;
   color: black;
   border-radius: 12px;
