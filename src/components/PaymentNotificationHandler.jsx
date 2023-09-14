@@ -8,6 +8,7 @@ import emailjs from "emailjs-com";
 
 function PaymentNotificationHandler() {
   const { loading, error, data } = useQuery(GET_CLIENTS);
+
   const [deleteClient] = useMutation(DELETE_CLIENT, {
     variables: { id: data?.id },
 
@@ -25,14 +26,26 @@ function PaymentNotificationHandler() {
   useEffect(() => {
     if (!loading && !error) {
       data?.clients?.forEach((client) => {
-        if (client.payment === "COMPLETE") {
-          sendEmail(client.email, client.item, client.id);
+        if (client.payment === "COMPLETE" && client.item === 'CURRENCY_PAIRS_GOLD_MONTHLY') {
+          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/He2FUmWc4yDLWwa1OMVJBW');
+        } else if (client.payment === "COMPLETE" && client.item === 'CURRENCY PAIRS and GOLD (Lifetime)') {
+          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/ENdoHq0CIqXHdsNyNOUSET');
+        } else if (client.payment === "COMPLETE" && client.item === 'INDICE SIGNALS (Monthly)') {
+          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/E0y2elqJSMsIUwkb38Unw2');
+        } else if (client.payment === "COMPLETE" && client.item === 'INDICE SIGNALS (Lifetime)') {
+          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/BDTOFjOAqj2FuMVFJQozeE');
+        } else if (client.payment === "COMPLETE" && client.item === 'MENTORSHIP BEGINNER PROGRAM') {
+          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/J8R8oFDBJFY0mBf7XV4OJe');
+        } else if (client.payment === "COMPLETE" && client.item === 'MENTORSHIP STANDARD PROGRAM') {
+          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/J8R8oFDBJFY0mBf7XV4OJe');
+        } else if (client.payment === "COMPLETE" && client.item === 'TRADING SESSIONS - FOREX LESSONS') {
+          sendEmail(client.email, client.item, client.id, 'https://chat.whatsapp.com/J8R8oFDBJFY0mBf7XV4OJe');
         }
       });
     }
   }, [loading, error, data]);
 
-  const sendEmail = async (email, item, clientId) => {
+  const sendEmail = async (email, item, clientId, groupLink) => {
     const serviceId = "service_q8xdbk5";
     const templateId = "template_0sdou9y";
     const publicKey = "XMuBgQ3YGKWmWQ-0m";
@@ -46,6 +59,8 @@ function PaymentNotificationHandler() {
       to_email: email,
       subject: "Welcome to FX Blueprint!",
       item_name: item,
+      reply_to: 'mutenjejustin2@gmail.com',
+      whatsLink: groupLink
     };
 
     try {
@@ -56,7 +71,7 @@ function PaymentNotificationHandler() {
         templateParams,
         publicKey
       );
-      toast.success('Payment successful! Please check your email to access the Fx Blueprint groupchat', {
+      toast.success('Payment successful! Please check your email', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
