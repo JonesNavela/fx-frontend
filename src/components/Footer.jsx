@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FaInstagram, FaTiktok, FaWhatsapp } from 'react-icons/fa';
-import AOS from 'aos';
-// import 'aos/dist/aos.css';
 
 const FooterContainer = styled.footer`
   color: #ffffff;
@@ -37,8 +35,6 @@ const SocialIcon = styled.a`
 const DevelopedBy = styled.p`
   font-size: 12px;
 `;
-
-AOS.init();
 
 function Footer() {
   return (

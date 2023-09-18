@@ -40,10 +40,12 @@ const ReviewsContainer = styled.section`
   flex-direction: column;
   align-items: center;
 
+  @media (max-width: 768px) {
     background-image: url(${backgroundImage});
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.9
+   }
 `;
 
 const ReviewCard = styled.div`
