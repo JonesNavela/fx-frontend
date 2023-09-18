@@ -1,5 +1,7 @@
-import styled from "styled-components"
-import { Button } from 'react-bootstrap'
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Button, Modal } from 'react-bootstrap';
+
 
 const Container = styled.div`
 padding: 20px;
@@ -39,6 +41,15 @@ const ButtonContainer = styled.div`
 `
 
 function Card({ title, period, price, payUrl }) {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
+
+  const handleBuyClick = () => {
+    handleShow();
+  };
+
   return (
     <Container>
       <CardComponent>
@@ -46,13 +57,30 @@ function Card({ title, period, price, payUrl }) {
         <CardTitle>{period}</CardTitle>
         <CardTitle>R{price}</CardTitle>
         <ButtonContainer>
-            <Button>
-              <a style={{ textDecoration: 'none', color: 'white'}} href={payUrl}>BUY ME</a>
-            </Button>
+          <Button onClick={handleBuyClick}>BUY ME</Button>
         </ButtonContainer>
-    </CardComponent>
+      </CardComponent>
+
+      {/* Confirmation Modal */}
+      <Modal show={showModal} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Please use your email address on the payment portal in order to receive a confirmation email from us.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button style={{ backgroundColor: '#A8963E'}} href={payUrl} onClick={handleClose}>
+            Continue to Payment
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
-  )
+  );
 }
+
 
 export default Card
