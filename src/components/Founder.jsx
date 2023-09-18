@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FounderImage from '../assets/founder.jpg';
+import FounderImage from '../assets/just.jpg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -19,11 +19,14 @@ const HeaderText = styled.p`
 `;
 
 const Image = styled.img`
-  width: 28vh;
+  width: 170px;
   height: 170px;
-  border-radius: 50%; /* Adjusted to 50% for a circular shape */
+  border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 10px;
 `;
+
+
 
 const TitleText = styled.p`
   font-size: 16px;
