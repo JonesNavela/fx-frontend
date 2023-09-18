@@ -17,6 +17,10 @@ const Container = styled.div`
   max-width: 100vh;
   margin: 0 auto;
   padding: 10px 20px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `;
 
 const Brand = styled.a`
@@ -34,23 +38,22 @@ const Brand = styled.a`
 
 const MobileMenuButton = styled.div`
   cursor: pointer;
-  display: block;
   color: #fff;
   font-size: 24px;
   padding: 5px;
-  display: none;
 
-  @media (max-width: 768px) {
-    display: block;
+  @media (min-width: 769px) {
+    display: none;
   }
 `;
 
 const NavLinks = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
 
   @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: ${props => (props.showMobileMenu ? 'center' : 'flex-start')};
     display: ${props => (props.showMobileMenu ? 'flex' : 'none')};
     position: absolute;
     top: 60px;
@@ -60,6 +63,11 @@ const NavLinks = styled.div`
     text-align: center;
     z-index: 1;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+  }
+
+  @media (min-width: 769px) {
+    margin-left: auto; /* Pushes NavLinks to the right */
   }
 `;
 
@@ -67,6 +75,10 @@ const NavLink = styled.a`
   text-decoration: none;
   color: #fff;
   margin: 10px;
+
+  @media (max-width: 768px) {
+    margin: 10px 0;
+  }
 `;
 
 function Navigationbar() {
