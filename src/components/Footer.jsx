@@ -55,7 +55,7 @@ function Footer() {
         <SocialIcon href="https://www.tiktok.com/@fx_blueprint">
         <FaTiktok />
         </SocialIcon>
-        <SocialIcon href="https://api.whatsapp.com/send?phone=0812308278">
+        <SocialIcon href="https://api.whatsapp.com/send?phone=0812308278" target='_blank'>
         <FaWhatsapp />
 
         </SocialIcon>
