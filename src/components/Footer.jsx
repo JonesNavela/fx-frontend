@@ -55,7 +55,7 @@ function Footer() {
         <SocialIcon href="https://www.tiktok.com/@fx_blueprint">
         <FaTiktok />
         </SocialIcon>
-        <SocialIcon href="https://wa.me/0812308278">
+        <SocialIcon href="https://wa.me/+27812308278">
         <FaWhatsapp />
 
         </SocialIcon>
