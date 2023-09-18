@@ -49,13 +49,13 @@ function Footer() {
       </ContactDetails>
 
       <SocialIcons>
-        <SocialIcon href="https://instagram.com">
+        <SocialIcon href="https://www.instagram.com/fx_blueprint1/">
           <FaInstagram />
         </SocialIcon>
-        <SocialIcon href="https://tiktok.com">
+        <SocialIcon href="https://www.tiktok.com/@fx_blueprint">
         <FaTiktok />
         </SocialIcon>
-        <SocialIcon href="https://whatsapp.com">
+        <SocialIcon href="https://wa.me/0812308278">
         <FaWhatsapp />
 
         </SocialIcon>
